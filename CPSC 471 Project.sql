@@ -11,14 +11,14 @@ when you've attempted to implement your part
 -Please do not modify code that is outside your start and end comments. If you'd like to make a change, message me :)
 */
 
-/* ------------------------------------------------------------ Table of Contents ------------------------------------------------------------
+/* *********************************************************** Table of Contents ***********************************************************
 -Entities: Line 20 to 210
 -Relationships: Line 211 to 240
 -Populating the Database Line 241 to 466
 -Endpoints Line 466 to 505
 */
 
-/* ------------------------------------------------------------ Entities ------------------------------------------------------------*/
+/* *********************************************************** Entities *********************************************************** */
 CREATE TABLE Person (
 LastName VARCHAR (255), /*LastName is a String type with a 255 char limit*/
 FirstName VARCHAR(255), 
@@ -209,7 +209,7 @@ FOREIGN KEY (NutritionID) REFERENCES NutritionalContent(NutritionID)
 ON DELETE CASCADE
 );
 
-/* ------------------------------------------------------------ Relationships ------------------------------------------------------------ */
+/* *********************************************************** Relationships *********************************************************** */
 /*To do: Exactly the same thing with entities, but now, with relationships. Follow the RM on draw.io*/
 /*The following relationships need to be inserted:
 -Prepares
@@ -239,7 +239,7 @@ FOREIGN KEY (IngredientID) REFERENCES Ingredient(IngredientID)
 
 /*End of Mohammad's part*/
 
-/* ------------------------------------------------------------ Populating the Database ------------------------------------------------------------ */
+/* *********************************************************** Populating the Database *********************************************************** */
 /*To do: Insert 3 entries of entity and relationships in the database*/
 
 /*The following needs to be populated:
@@ -464,7 +464,7 @@ then you're on the right track and can proceed to code  the remaining ones :)*/
 
 /*End of Mohammad's part*/
 
-/* ------------------------------------------------------------ Endpoints ------------------------------------------------------------ */
+/* *********************************************************** Endpoints *********************************************************** */
 /*To do: The 9 endpoints should go here. Storing has already been completed in the Entity section*/
 
 /*Endpoint: Update Meal Option information*/
@@ -507,5 +507,4 @@ If you're retrieving the relevent attributes (as shown in Parent Query), then yo
 
 /*ToDo
 Issues with duplicates in MealTypes
-Test
 */
