@@ -390,6 +390,7 @@ VALUES('403-007-0002', 'Address 72', 90, 220.5);
 /*Let me know if you have any questions :)*/
 /*Note: Volunteer entity was removed for the sake of simplicity. So, entities like Chef who was a subclass of Volunteer, is now a subclass of Person*/
 
+
 /* First time is tricky. See my example of inserting Nutritionist into database above (roughly 70 lines above this line). When you've coded first entry, run the script. If you get no errors,
 then you're on the right track and can proceed to code the remaining ones :)*/
 /*Entity: Chef. Entry #: 1*/
@@ -443,6 +444,7 @@ INSERT INTO CompanyPurchases (TotalCost, CompanyID, IngredientID)
 VALUES(52, 3, 3);
 
 /*Start of Mohammad's part.*/
+/*Note: Read the advice under 'Populating the Database' above. Search for the word 'Advice'/*
 
 /*First time is tricky. See my example of inserting CompanyPurchases into database above (roughly 10 lines above this line). When you've coded first entry, run the script. If you get no errors,
 then you're on the right track and can proceed to code  the remaining ones :)*/
