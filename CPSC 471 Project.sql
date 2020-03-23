@@ -1,5 +1,5 @@
--- CREATE DATABASE cpsc471_project;
--- USE cpsc471_project; /*Selects cpsc471_project Database 
+CREATE DATABASE cpsc471_project;
+USE cpsc471_project; /*Selects cpsc471_project Database 
 /* Notes:
 -First thing I recommend when you start on this is to run the entire script to see how it works. To do that, press Ctrl + All and click the Lightning icon (Without the I) on the top left.
 -When you've ran this script once. Comment out lines 1 and 2, you will never need to execute these lines anymore.
