@@ -1,5 +1,5 @@
-CREATE DATABASE cpsc471_project;
-USE cpsc471_project; /*Selects cpsc471_project Database 
+-- CREATE DATABASE cpsc471_project;
+USE cpsc471_project; /*Selects cpsc471_project Database */
 /* Notes:
 -First thing I recommend when you start on this is to run the entire script to see how it works. To do that, press Ctrl + All and click the Lightning icon (Without the I) on the top left.
 -When you've ran this script once. Comment out lines 1 and 2, you will never need to execute these lines anymore.
@@ -12,10 +12,10 @@ when you've attempted to implement your part
 */
 
 /* *********************************************************** Table of Contents ***********************************************************
--Entities: Line 20 to 210
--Relationships: Line 211 to 240
--Populating the Database Line 241 to 466
--Endpoints Line 466 to 505
+-Entities
+-Relationships
+-Populating the 
+-Endpoints 
 */
 
 /* *********************************************************** Entities *********************************************************** */
@@ -210,13 +210,6 @@ ON DELETE CASCADE
 );
 
 /* *********************************************************** Relationships *********************************************************** */
-/*To do: Exactly the same thing with entities, but now, with relationships. Follow the RM on draw.io*/
-/*The following relationships need to be inserted:
--Prepares
--PersonPurchases
--ChefEducates
--NutritionistEducates
-*/
 
 /*Example of what this should look like*/
 CREATE TABLE CompanyPurchases(
@@ -229,9 +222,6 @@ FOREIGN KEY (IngredientID) REFERENCES Ingredient(IngredientID)
 );
 
 /*Start of Mohammad's part*/
-/*Follow the RM on draw.io. Let me know if you have any questions :)*/
-
-/*When you create your first table, I'd like you to send me a picture of your work so that I can check it. If the first one looks good, then you can proceed to do the remaining ones :)*/
 /*Prepares*/
 CREATE TABLE Prepares(
 StaffSSN VARCHAR(11) NOT NULL,
@@ -263,44 +253,18 @@ NutritionistSSN VARCHAR(11) NOT NULL,
 FOREIGN KEY (StudentSSN) REFERENCES Student(StudentSSN),
 FOREIGN KEY (NutritionistSSN) REFERENCES Nutritionist(NutritionistSSN)
 );
-
-
 /*End of Mohammad's part*/
 
 /* *********************************************************** Populating the Database *********************************************************** */
-/*To do: Insert 3 entries of entity and relationships in the database*/
-
-/*The following needs to be populated:
-Entities
--Chef
--FoodDonatedCompany
--FoodDonatedPerson
--KitchenStaff
--Macronutrients
--MedicalReport
--Micronutrients
--NutrtionalContent
--Parent
--Volunteer
-
-Relationships
--Prepares
--PersonPurchases
--ChefEducates
--NutritionistEducates
-*/
-
 /*Advice: Each subclass of person will have a PhoneNo and SSN. There will be problems inserting these into the database as it is difficult for our us to keep track of all this info
 in our head. For example, if you insert the SSN 100-000-000 for one student, and then you want to insert SSN for parent, you might forget that you already used 100-000-000 and attempt it.
 To prevent such duplicate entries, we will assign each subclass in person a numberm like so:
-
 Kitchen Staff: 1
 Volunteer: 2
 Parent: 3
 Nutritionist: 4
 Chef: 5
 Student: 6
-
 If we want to insert a new entry for Student, then it would look like this: PhoneNo: 403-006-0000 and SSN: 100-006-000. Next student entry would be: PhoneNo: 403-006-0001 and SSN: 100-006-001.
 Here is another example, for Chef:  PhoneNo: 403-005-0000 and SSN: 100-005-000. Next Chef entry would be: PhoneNo: 403-005-0001 and SSN: 100-005-001
 We'll do the same thing for address. So, for Student: Address 60, next entry: Address 61. For Chef: Address 50, next entry: Address 51
@@ -416,46 +380,132 @@ VALUES('403-007-0002', 'Address 72', 90, 220.5);
 
 /*Start of Boma's part*/
 /*Let me know if you have any questions :)*/
-/*Note: Volunteer entity was removed for the sake of simplicity. So, entities like Chef who was a subclass of Volunteer, is now a subclass of Person*/
 
-
-/* First time is tricky. See my example of inserting Nutritionist into database above (roughly 70 lines above this line). When you've coded first entry, run the script. If you get no errors,
-then you're on the right track and can proceed to code the remaining ones :)*/
 /*Entity: Chef. Entry #: 1*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('7.5', '12', '100-005-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramthay', 'Gordon', "Address 50", 0, '100-005-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-000', '100-005-000');
 /*Entity: Chef. Entry #: 2*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('9.5', '26', '100-005-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramsay', 'Nordon', "Address 51", 20, '100-005-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-001', '100-005-001');
 /*Entity: Chef. Entry #: 3*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('5', '5', '100-005-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramhay', 'Bordon', "Address 52", 80, '100-005-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-002', '100-005-002');
 
 /*Entity: Parent. Entry #: 1*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Server', '100-003-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Jones', 'Jeff', "Address 30", 0, '100-003-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-000', '100-003-000');
 /*Entity: Parent. Entry #: 2*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Kitchen Staff', '100-003-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Kittles', 'Kerry', "Address 31", 130, '100-003-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-001', '100-003-001');
 /*Entity: Parent. Entry #: 3*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Taster', '100-003-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Pierce', 'Paul', "Address 32", 95, '100-003-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-002', '100-003-002');
 
 /*Entity: KitchenStaff. Entry #: 1*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(55000, 7, '100-001-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Johnson', 'Dwayne', "Address 10", 85, '100-001-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-000', '100-001-000');
 /*Entity: KitchenStaff. Entry #: 2*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(25000, 2, '100-001-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Flair', 'Rick', "Address 11", 120, '100-001-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-001', '100-001-001');
 /*Entity: KitchenStaff. Entry #: 3*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(30000, 4, '100-001-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Micheals', 'Shawn', "Address 12", 0, '100-001-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-002', '100-001-002');
 
 /*Entity: FoodDonatedCompany. Entry #: 1*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(1, 'Carrots');
 /*Entity: FoodDonatedCompany. Entry #: 2*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(2, 'Grapes');
 /*Entity: FoodDonatedCompany. Entry #: 3*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(3, 'Flour');
 
 /*Entity: FoodDonatedPerson. Entry #: 1*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-003-002', 'Apples');
 /*Entity: FoodDonatedPerson. Entry #: 2*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-003-000', 'Beans');
 /*Entity: FoodDonatedPerson. Entry #: 3*/
-
-/*Entity: Macronutrients. Entry #: 1*/
-/*Entity: Macronutrients. Entry #: 2*/
-/*Entity: Macronutrients. Entry #: 3*/
-
-/*Entity: Micronutrients. Entry #: 1*/
-/*Entity: Micronutrients. Entry #: 2*/
-/*Entity: Micronutrients. Entry #: 3*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-005-001', 'Chocolate');
 
 /*Entity: NutrtionalContent. Entry #: 1*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(1, 0, 45, 0, 0, 0, 1);
 /*Entity: NutrtionalContent. Entry #: 2*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(2, 5, 75, 10, 10, 5, 2);
 /*Entity: NutrtionalContent. Entry #: 3*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(3, 1, 75, 0, 5, 0, 3);
+
+/*Entity: Macronutrients. Entry #: 1*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(10, 25, 55, 1);
+/*Entity: Macronutrients. Entry #: 2*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(15, 20, 45, 2);
+/*Entity: Macronutrients. Entry #: 3*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(20, 35, 65, 3);
+
+/*Entity: Micronutrients. Entry #: 1*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(10, 70, 0, 100, 70, 10, 40, 30, 40, 20, 1);
+/*Entity: Micronutrients. Entry #: 2*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(0, 60, 10, 80, 70, 10, 35, 25, 35, 20, 2);
+/*Entity: Micronutrients. Entry #: 3*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(15, 40, 30, 100, 70, 10, 50, 60, 20, 45, 3);
 
 /*Entity: MedicalReport. Entry #: 1*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(1, 1, 0, 0, 0, '100-006-000');
 /*Entity: MedicalReport. Entry #: 2*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(2, 0, 1, 1, 1, '100-006-001');
 /*Entity: MedicalReport. Entry #: 3*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(3, 1, 1, 1, 0, '100-006-002');
 
 /*End of Boma's part*/
 
@@ -472,19 +522,15 @@ INSERT INTO CompanyPurchases (TotalCost, CompanyID, IngredientID)
 VALUES(52, 3, 3);
 
 /*Start of Mohammad's part.*/
-/*Note: Read the advice under 'Populating the Database' above. Search for the word 'Advice'/*
-
-/*First time is tricky. See my example of inserting CompanyPurchases into database above (roughly 10 lines above this line). When you've coded first entry, run the script. If you get no errors,
-then you're on the right track and can proceed to code  the remaining ones :)*/
 /*Relationship: Prepares. Entry #: 1*/
--- INSERT INTO  Prepares (StaffSSN, MealOptionID)
--- VALUES('100-001-000', 1);
--- /*Relationship: Prepares. Entry #: 2*/
--- INSERT INTO  Prepares (StaffSSN, MealOptionID)
--- VALUES('100-001-001', 2);
--- /*Relationship: Prepares. Entry #: 3*/
--- INSERT INTO  Prepares (StaffSSN, MealOptionID)
--- VALUES('100-001-002', 3);
+INSERT INTO  Prepares (StaffSSN, MealOptionID)
+VALUES('100-001-000', 1);
+/*Relationship: Prepares. Entry #: 2*/
+INSERT INTO  Prepares (StaffSSN, MealOptionID)
+VALUES('100-001-001', 2);
+/*Relationship: Prepares. Entry #: 3*/
+INSERT INTO  Prepares (StaffSSN, MealOptionID)
+VALUES('100-001-002', 3);
 
 /*Relationship: PersonPurchases. Entry #: 1*/
 INSERT INTO  PersonPurchases (SSN, IngredientID, TotalCost)
@@ -497,14 +543,14 @@ INSERT INTO  PersonPurchases (SSN, IngredientID, TotalCost)
 VALUES('100-006-002', 2, 1.40);
 
 /*Relationship: ChefEducates. Entry #: 1*/
--- INSERT INTO ChefEducates (StudentSSN, ChefSSN)
--- VALUES('100-006-000', '100-005-000');
--- /*Relationship: ChefEducates. Entry #: 2*/
--- INSERT INTO ChefEducates (StudentSSN, ChefSSN)
--- VALUES('100-006-001', '100-005-001');
--- /*Relationship: ChefEducates. Entry #: 3*/
--- INSERT INTO ChefEducates (StudentSSN, ChefSSN)
--- VALUES('100-006-002', '100-005-002');
+INSERT INTO ChefEducates (StudentSSN, ChefSSN)
+VALUES('100-006-000', '100-005-000');
+/*Relationship: ChefEducates. Entry #: 2*/
+INSERT INTO ChefEducates (StudentSSN, ChefSSN)
+VALUES('100-006-001', '100-005-001');
+/*Relationship: ChefEducates. Entry #: 3*/
+INSERT INTO ChefEducates (StudentSSN, ChefSSN)
+VALUES('100-006-002', '100-005-002');
 
 /*Relationship: NutritionistEducates. Entry #: 1*/
 INSERT INTO NutritionistEducates (StudentSSN, NutritionistSSN)
@@ -515,7 +561,6 @@ VALUES('100-006-001', '100-004-001');
 /*Relationship: NutritionistEducates. Entry #: 3*/
 INSERT INTO NutritionistEducates (StudentSSN, NutritionistSSN)
 VALUES('100-006-002', '100-004-002');
-
 /*End of Mohammad's part*/
 
 /* *********************************************************** Endpoints *********************************************************** */
@@ -560,6 +605,5 @@ If you're retrieving the relevent attributes (as shown in Parent Query), then yo
 /*End of Annelyse's part*/
 
 /*ToDo
--Issues with duplicates in MealTypes
--Uncomment ChefEducates and Preparess
+Issues with duplicates in MealTypes
 */
