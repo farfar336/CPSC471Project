@@ -394,40 +394,131 @@ VALUES('403-007-0002', 'Address 72', 90, 220.5);
 /* First time is tricky. See my example of inserting Nutritionist into database above (roughly 70 lines above this line). When you've coded first entry, run the script. If you get no errors,
 then you're on the right track and can proceed to code the remaining ones :)*/
 /*Entity: Chef. Entry #: 1*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('7.5', '12', '100-005-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramthay', 'Gordon', "Address 50", 0, '100-005-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-000', '100-005-000');
 /*Entity: Chef. Entry #: 2*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('9.5', '26', '100-005-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramsay', 'Nordon', "Address 51", 20, '100-005-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-001', '100-005-001');
 /*Entity: Chef. Entry #: 3*/
+INSERT INTO Chef (PresentationRating, YearsOfExperience, ChefSSN)
+	VALUES('5', '5', '100-005-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+    VALUES('Ramhay', 'Bordon', "Address 52", 80, '100-005-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+    VALUES('403-005-002', '100-005-002');
 
 /*Entity: Parent. Entry #: 1*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Server', '100-003-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Jones', 'Jeff', "Address 30", 0, '100-003-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-000', '100-003-000');
 /*Entity: Parent. Entry #: 2*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Kitchen Staff', '100-003-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Kittles', 'Kerry', "Address 31", 130, '100-003-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-001', '100-003-001');
 /*Entity: Parent. Entry #: 3*/
+INSERT INTO Parent (PreferredVolunteerRole, ParentSSN)
+	VALUES('Taster', '100-003-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Pierce', 'Paul', "Address 32", 95, '100-003-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-003-002', '100-003-002');
 
 /*Entity: KitchenStaff. Entry #: 1*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(55000, 7, '100-001-000');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Johnson', 'Dwayne', "Address 10", 85, '100-001-000');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-000', '100-001-000');
 /*Entity: KitchenStaff. Entry #: 2*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(25000, 2, '100-001-001');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Flair', 'Rick', "Address 11", 120, '100-001-001');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-001', '100-001-001');
 /*Entity: KitchenStaff. Entry #: 3*/
+INSERT INTO KitchenStaff (Salary, YearsWorked, StaffSSN)
+	VALUES(30000, 4, '100-001-002');
+INSERT INTO Person (LastName, FirstName, Address, AmountDonated, SSN)
+	VALUES('Micheals', 'Shawn', "Address 12", 0, '100-001-002');
+INSERT INTO PhoneNo (PhoneNo, SSN)
+	VALUES('403-001-002', '100-001-002');
 
 /*Entity: FoodDonatedCompany. Entry #: 1*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(1, 'Carrots');
 /*Entity: FoodDonatedCompany. Entry #: 2*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(2, 'Grapes');
 /*Entity: FoodDonatedCompany. Entry #: 3*/
+INSERT INTO FoodDonatedCompany (CompanyID, FoodName)
+	VALUES(3, 'Flour');
+
 
 /*Entity: FoodDonatedPerson. Entry #: 1*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-003-002', 'Apples');
 /*Entity: FoodDonatedPerson. Entry #: 2*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-003-000', 'Beans');
 /*Entity: FoodDonatedPerson. Entry #: 3*/
+INSERT INTO FoodDonatedPerson (SSN, FoodName)
+	VALUES('100-005-001', 'Chocolate');
 
 /*Entity: Macronutrients. Entry #: 1*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(10, 25, 55, 1);
 /*Entity: Macronutrients. Entry #: 2*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(15, 20, 45, 2);
 /*Entity: Macronutrients. Entry #: 3*/
+INSERT INTO Macronutrients(Fats, Proteins, Carbohydrates, NutritionID)
+	VALUES(20, 35, 65, 3);
 
 /*Entity: Micronutrients. Entry #: 1*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(10, 70, 0, 100, 70, 10, 40, 30, 40, 20, 1);
 /*Entity: Micronutrients. Entry #: 2*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(0, 60, 10, 80, 70, 10, 35, 25, 35, 20, 2);
 /*Entity: Micronutrients. Entry #: 3*/
+INSERT INTO Micronutrients (VitaminA, VitaminB, VitaminD, VitaminC, Zinc, Iron, Sodium, Potassium, Calcium, VitaminK, NutritionID)
+	VALUES(15, 40, 30, 100, 70, 10, 50, 60, 20, 45, 3);
 
 /*Entity: NutrtionalContent. Entry #: 1*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(1, 0, 45, 0, 0, 0, 1);
 /*Entity: NutrtionalContent. Entry #: 2*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(2, 5, 75, 10, 10, 5, 2);
 /*Entity: NutrtionalContent. Entry #: 3*/
+INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
+	VALUES(3, 1, 75, 0, 5, 0, 3);
 
 /*Entity: MedicalReport. Entry #: 1*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(1, 1, 0, 0, 0, '100-006-000');
 /*Entity: MedicalReport. Entry #: 2*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(2, 0, 1, 1, 1, '100-006-001');
 /*Entity: MedicalReport. Entry #: 3*/
+INSERT INTO MedicalReport (ReportNo, LactoseIntolerant, CeliacDisease, HighCholesterol, BMIGreaterThan25, StudentSSN)
+	VALUES(3, 1, 1, 1, 0, '100-006-002');
 
 /*End of Boma's part*/
 
