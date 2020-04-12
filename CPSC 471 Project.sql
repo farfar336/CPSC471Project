@@ -1,15 +1,5 @@
 -- CREATE DATABASE cpsc471_project;
 USE cpsc471_project; /*Selects cpsc471_project Database */
-/* Notes:
--First thing I recommend when you start on this is to run the entire script to see how it works. To do that, press Ctrl + All and click the Lightning icon (Without the I) on the top left.
--When you've ran this script once. Comment out lines 1 and 2, you will never need to execute these lines anymore.
--You'll notice that you get no errors when running this. So, when your part has been implemented, do a test run to make sure it has no errors as well.
--It is likely that you will get errors and have to modify the script and re-run it. But, you can't run this more than once because the tables have already been created. So
-you have to select all tables under 'SCHEMAS', right click and drop all tables. Now you can run the script again. This won't make sense when reading it the first time, so come back to this
-when you've attempted to implement your part
--Search up your name to find which section you should cover
--Please do not modify code that is outside your start and end comments. If you'd like to make a change, message me :)
-*/
 
 /* *********************************************************** Table of Contents ***********************************************************
 -Entities
@@ -256,20 +246,6 @@ FOREIGN KEY (NutritionistSSN) REFERENCES Nutritionist(NutritionistSSN)
 /*End of Mohammad's part*/
 
 /* *********************************************************** Populating the Database *********************************************************** */
-/*Advice: Each subclass of person will have a PhoneNo and SSN. There will be problems inserting these into the database as it is difficult for our us to keep track of all this info
-in our head. For example, if you insert the SSN 100-000-000 for one student, and then you want to insert SSN for parent, you might forget that you already used 100-000-000 and attempt it.
-To prevent such duplicate entries, we will assign each subclass in person a numberm like so:
-Kitchen Staff: 1
-Volunteer: 2
-Parent: 3
-Nutritionist: 4
-Chef: 5
-Student: 6
-If we want to insert a new entry for Student, then it would look like this: PhoneNo: 403-006-0000 and SSN: 100-006-000. Next student entry would be: PhoneNo: 403-006-0001 and SSN: 100-006-001.
-Here is another example, for Chef:  PhoneNo: 403-005-0000 and SSN: 100-005-000. Next Chef entry would be: PhoneNo: 403-005-0001 and SSN: 100-005-001
-We'll do the same thing for address. So, for Student: Address 60, next entry: Address 61. For Chef: Address 50, next entry: Address 51
-Also, we need to insert multiple phone numbers. I've already done this for the student entity, so just one will be enough for the other subclasses.
-*/
 
 /*Entities go here. Please don't put relationships here :) */
 /*Example of inserting an inherited entity into database*/
@@ -341,32 +317,6 @@ VALUES(2, '2020-02-21', 'Veggieso', 10.5, 'Basement', 100);
 /*Entity: Student. Entry #: 3*/
 INSERT INTO Ingredient (IngredientID, ExpiryDate, SupplierName, Cost, StorageLocation, Mass) 
 VALUES(3, '2020-03-21', 'Salado', 90.5, 'Basement', 220);
-
-/*Example of inserting a strong entity into database*/
-/*Entity: MealOption. Entry #: 1*/
-INSERT INTO MealOption (MealName, MealPrice, NutritionistSSN, IngredientID) 
-VALUES('Apple Salad', 1.50, '100-004-000', 1);
-/*MealOption has a MealType, which is a multi-valued attribute. To say 'MealOptionID 1 is both LowSodium and LowSugar, we code it as follows:*/
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('LowSodium', 1);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('LowSugar', 1);
-/*Entity: MealOption. Entry #: 2*/
-INSERT INTO MealOption (MealName, MealPrice, NutritionistSSN, IngredientID) 
-VALUES('Grape Salad', 2.50, '100-004-001', 2);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('DairyFree', 2);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('LowSugar', 2);
-/*Entity: MealOption. Entry #: 3*/
-INSERT INTO MealOption (MealName, MealPrice, NutritionistSSN, IngredientID) 
-VALUES('Lemon Salad', 2.30, '100-004-002', 3);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('DairyFree', 3);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('LowSugar', 3);
-INSERT INTO MealType (MealType, MealOptionID) 
-VALUES('LowSodium', 3);
 
 /*Entity: Company. Entry #: 1*/
 INSERT INTO Company (PhoneNo, Address, NoOfEmployees, AmountDonated) 
@@ -466,6 +416,32 @@ INSERT INTO FoodDonatedPerson (SSN, FoodName)
 /*Entity: FoodDonatedPerson. Entry #: 3*/
 INSERT INTO FoodDonatedPerson (SSN, FoodName)
 	VALUES('100-005-001', 'Chocolate');
+
+/*Example of inserting a strong entity into database*/
+/*Entity: MealOption. Entry #: 1*/
+INSERT INTO MealOption (MealName, MealPrice, ParentSSN,  NutritionistSSN, IngredientID) 
+VALUES('Apple Salad', 1.50, '100-003-000', '100-004-000', 1);
+/*MealOption has a MealType, which is a multi-valued attribute. To say 'MealOptionID 1 is both LowSodium and LowSugar, we code it as follows:*/
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('LowSodium', 1);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('LowSugar', 1);
+/*Entity: MealOption. Entry #: 2*/
+INSERT INTO MealOption (MealName, MealPrice, ParentSSN, NutritionistSSN, IngredientID) 
+VALUES('Grape Salad', 2.50, '100-003-001', '100-004-001', 2);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('DairyFree', 2);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('LowSugar', 2);
+/*Entity: MealOption. Entry #: 3*/
+INSERT INTO MealOption (MealName, MealPrice, ParentSSN, NutritionistSSN, IngredientID) 
+VALUES('Lemon Salad', 2.30, '100-003-002', '100-004-002', 3);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('DairyFree', 3);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('LowSugar', 3);
+INSERT INTO MealType (MealType, MealOptionID) 
+VALUES('LowSodium', 3);
 
 /*Entity: NutrtionalContent. Entry #: 1*/
 INSERT INTO NutritionalContent (NutritionID, Sugar, Calories, Cholesterol, Lactose, Gluten, MealOptionID)
